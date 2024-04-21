@@ -1,17 +1,3 @@
-<?php
-
-$get_str = 'function get_str($string, $start, $end) {
-    return explode($end, explode($start, $string)[1])[0];
-}';
-
-$json_decode = 'json_decode($response, true)[\'id\'];';
-
-$uuid = 'function uuid() {
-    return vsprintf(\'%s%s-%s-%s-%s-%s%s%s\', str_split(bin2hex(random_bytes(16)), 4));
-};';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
