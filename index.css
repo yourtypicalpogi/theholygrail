@@ -41,13 +41,13 @@ body {
 
 .image-container img {
     display: block;
-    width: 100%; /* Ensure the image takes up the full width of its container */
-    height: auto; /* Maintain aspect ratio */
-    transition: filter 0.3s ease; /* Smooth transition for the filter effect */
+    width: 100%;
+    height: auto;
+    transition: filter 0.3s ease;
 }
 
 .image-container:hover img {
-    filter: brightness(30%); /* Darken the image on hover */
+    filter: brightness(30%);
 }
 
 .text {

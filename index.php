@@ -70,7 +70,7 @@
                         class="container h-100 w-75 d-flex mx-auto align-items-center"
                     >
                         <div class="row">
-                            <div class="col-12 col-md-3 mb-3 mt-3 m-md-0">
+                            <div class="col-12 col-md-3 mb-3 mt-4 m-md-0">
                                 <div class="image-container">
                                     <img
                                         class="profile"
