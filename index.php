@@ -83,9 +83,9 @@
                             <?php
                             $members = [
                                 "Chae" => "chae", 
-                                "Gon" => "gon", 
+                                "Mobi" => "mobi", 
                                 "Misaka" => "misaka", 
-                                "Ching" => "pogi", 
+                                "Ramyeun" => "pogi", 
                                 "Jaehwqn" => "jaehwan", 
                                 "Saitama" => "saitama", 
                                 "Chillz" => "chillz"
