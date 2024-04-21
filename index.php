@@ -21,11 +21,11 @@
             <div class="row min-vh-100">
                 <div class="bg-thg pt-4 col-auto col-md-auto">
                     <nav class="nav flex-nowrap">
-                        <ul class="navbar-nav px-0 ps-1">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a href="" class="nav-link"
                                     ><i
-                                        class="material-symbols-outlined fs-4 m-2"
+                                        class="material-symbols-outlined fs-3 m-2"
                                         >construction</i
                                     ></a
                                 >
@@ -33,7 +33,7 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link"
                                     ><i
-                                        class="material-symbols-outlined fs-4 m-2"
+                                        class="material-symbols-outlined fs-3 m-2"
                                         >auto_stories</i
                                     ></a
                                 >
@@ -41,7 +41,7 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link"
                                     ><i
-                                        class="material-symbols-outlined fs-4 m-2"
+                                        class="material-symbols-outlined fs-3 m-2"
                                         >terminal</i
                                     ></a
                                 >
@@ -49,7 +49,7 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link"
                                     ><i
-                                        class="material-symbols-outlined fs-4 m-2"
+                                        class="material-symbols-outlined fs-3 m-2"
                                         >archive</i
                                     ></a
                                 >
@@ -57,7 +57,7 @@
                             <li class="nav-item">
                                 <a href="" class="nav-link"
                                     ><i
-                                        class="material-symbols-outlined fs-4 m-2"
+                                        class="material-symbols-outlined fs-3 m-2"
                                         >sword_rose</i
                                     ></a
                                 >
