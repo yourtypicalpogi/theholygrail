@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&family=Poppins&display=swap");
+
+:root {
+    --primary: #31363f;
+    --secondary: #222831;
+    --text: #eeeeee;
+    --icons: #76abae;
+}
+
+body {
+    background-color: var(--primary);
+    color: var(--text);
+    font-family: "Kanit", sans-serif;
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    color: var(--icons);
+}
+
+.bg-thg {
+    background-color: var(--secondary);
+    border-right: #fffffe;
+}
+
+.code {
+    background-color: var(--primary);
+    border-color: #fffffe;
+    color: var(--text);
+}
+
+.profile {
+    width: 100%;
+    border-radius: 7px;
+}
+.profile:hover {
+    transform: scale(1.02);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.075), 0 0 8px var(--icons);
+}
