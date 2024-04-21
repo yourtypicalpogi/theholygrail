@@ -85,7 +85,7 @@
                                 "Chae" => "chae", 
                                 "Mobi" => "mobi", 
                                 "Misaka" => "misaka", 
-                                "Ramyeun" => "pogi", 
+                                "Ramyeun" => "ramyeun", 
                                 "Jaehwqn" => "jaehwan", 
                                 "Saitama" => "saitama", 
                                 "Chillz" => "chillz"
