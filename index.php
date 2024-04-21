@@ -71,65 +71,39 @@
                     >
                         <div class="row">
                             <div class="col-12 col-md-3 mb-3 mt-3 m-md-0">
-                                <img
-                                    class="profile"
-                                    src="src/pogi.jpeg"
-                                    alt=""
-                                />
+                                <div class="image-container">
+                                    <img
+                                        class="profile"
+                                        src="src/pogi.jpeg"
+                                        alt=""
+                                    />
+                                    <p class="text">Pogi</p>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/chae.jpeg"
-                                    alt=""
-                                />
+                            <?php
+                            $members = [
+                                "Chae" => "chae", 
+                                "Gon" => "gon", 
+                                "Misaka" => "misaka", 
+                                "Ching" => "pogi", 
+                                "Jaehwqn" => "jaehwan", 
+                                "Saitama" => "saitama", 
+                                "Chillz" => "chillz"
+                            ];
+                            foreach($members as $name => $image) { 
+                                echo '<div class="col-12 col-md-3 mb-3">
+                                        <div class="image-container">
+                                            <img
+                                                class="profile"
+                                                src="src/'.$image.'.jpeg"
+                                                alt=""
+                                            />
+                                        
+                                            <p class="text">'.$name.'</p>
+                                        </div>
+                                    </div>
+                                '; } ?>
                             </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/gon.jpeg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/misaka.jpeg"
-                                    alt=""
-                                />
-                            </div>
-
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/pogi.jpeg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/jaehwan.jpeg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/saitama.jpeg"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="col-12 col-md-3 mb-3">
-                                <img
-                                    class="profile"
-                                    src="src/chillz.jpeg"
-                                    alt=""
-                                />
-                            </div>
-                            <p class="text-center mt-2">
-                                <i>"Poverty is the worst form of violence."</i>
-                            </p>
                         </div>
                     </div>
                 </div>
