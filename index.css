@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit&family=Poppins&display=swap");
 
 :root {
-    --primary: #31363f;
-    --secondary: #222831;
+    --primary: #222831;
+    --secondary: #31363f;
     --text: #eeeeee;
     --icons: #76abae;
 }
@@ -15,12 +15,11 @@ body {
 
 .material-symbols-outlined {
     vertical-align: middle;
-    color: var(--icons);
+    color: var(--text);
 }
 
 .bg-thg {
-    background-color: var(--secondary);
-    border-right: #fffffe;
+    background-color: var(--primary);
 }
 
 .code {
@@ -55,7 +54,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: var(--text);
     font-size: 24px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -63,4 +62,21 @@ body {
 
 .image-container:hover .text {
     opacity: 1; /* Show text on hover */
+}
+
+.border-thg {
+    border-color: #31363f !important;
+}
+
+.accent {
+    color: var(--icons);
+}
+
+.btn-thg {
+    background-color: var(--icons) !important;
+    color: var(--text) !important;
+    border: none !important;
+}
+.btn-thg:hover {
+    filter: brightness(95%);
 }
