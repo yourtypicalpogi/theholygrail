@@ -80,39 +80,42 @@
     ></script>
     <script>
         const generate_curl = () => {
-            const curl = document.getElementById("curl").value.replace("^", "");
-            if (curl.match(/--data-raw/)) {
-                var post = curl
-                    .match(/--data-raw (.*?)$/)[1]
-                    .replace('""', '"')
-                    .replace("^", "");
-            } else if (curl.match(/--data-binary /)) {
-                var post = curl.match(/--data-binary (.*?)$/)[1];
-            } else {
-                var post = "";
-            }
-            const url = curl.match(/curl "(.*?)"/)[1];
-
-            const headers = [];
-            curl.split('-H "')
-                .splice(1)
-                .forEach(function (value, index) {
-                    headers.push(value.split('"')[0]);
-                });
+            const curl = document.getElementById("curl").value;
             fetch("generate_curl.php", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    url: url,
-                    post: post,
-                    headers: headers,
+                    curl: curl,
                 }),
             })
                 .then((response) => response.text())
                 .then((data) => {
-                    document.getElementById("curl").value = data;
+                    const response = JSON.parse(data);
+                    headers = [];
+                    response["headers"].forEach((header) => {
+                        headers.push(`"${header}",`);
+                    });
+                    if (response["method"] == "get") {
+                        document.getElementById("curl").value = `$url = "${
+                            response["url"]
+                        }";\n$headers = [\n\t${headers.join(
+                            "\n\t"
+                        )}\n];\n$response = $requests->${
+                            response.method
+                        }($url, $headers);`;
+                    } else {
+                        document.getElementById("curl").value = `$url = "${
+                            response["url"]
+                        }";\n$headers = [\n\t${headers.join(
+                            "\n\t"
+                        )}\n];\n$post = "${
+                            response["postfield"]
+                        }";\n$response = $requests->${
+                            response.method
+                        }($url, $headers, $post);`;
+                    }
                 })
                 .catch((error) => console.error("Error:", error));
         };

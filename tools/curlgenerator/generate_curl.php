@@ -1,34 +1,30 @@
 <?php 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $json = json_decode(file_get_contents("php://input"), true);
-     echo '<?php
-# Made by Pogi
+     $curl = str_replace("^", '', json_decode(file_get_contents("php://input"), true)['curl']);
 
-$ch = curl_init();
-curl_setopt_array($ch, [
-     CURLOPT_URL => "'.$json['url'].'",
-     CURLOPT_RETURNTRANSFER => true,
-     CURLOPT_FOLLOWLOCATION => true,
-     CURLOPT_SSL_VERIFYPEER => false,
-     CURLOPT_SSL_VERIFYHOST => false,
-     CURLOPT_COOKIEFILE => $cookie,
-     CURLOPT_COOKIEJAR => $cookie,
-     CURLOPT_HTTPHEADER => [
-';
-     foreach($json['headers'] as $key => $header) {
-          echo "\t\t\"$header\",\n";
+     preg_match('/curl "(.*?)"/', $curl, $match);
+
+     $url = $match[1];
+
+     preg_match_all('/-H "(.*?)"/', $curl, $match);
+     $headers = $match[1];
+
+     if (preg_match('/--data-raw "(.*)"$/', $curl, $match)) {
+          $data = $match[1];
+     } elseif (preg_match('/--data-binary "(.*)"$/', $curl, $match)) {
+          $data = $match[1];
      }
-     echo "\t],";
+
+     if(!isset($data)) {
+          echo json_encode(["url" => $url, "method" => 'get', "headers" => $headers]);
+     }
+     else {
+          echo json_encode(["url" => $url, "method" => 'post', "headers" => $headers, "postfield" => $data]);
+     }
+
      
-     if ($json['post'] != '') {
-          echo "
-     CURLOPT_POSTFIELDS => '".$json['post']."'
-]);";
-     }
-
-     echo '
-
-$response = curl_exec($ch);
-curl_close($ch);';
 }
+
+?>
+
