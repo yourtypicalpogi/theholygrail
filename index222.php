@@ -19,7 +19,7 @@
     <body>
         <div class="container-fluid">
             <div class="row min-vh-100">
-                <div class="bg-thg pt-4 col-auto col-md-auto border-end border-thg">
+                <div class="bg-primary pt-4 col-auto col-md-auto border-end border-bv">
                     <nav class="nav flex-nowrap">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -81,9 +81,50 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col p-3">
-                    <p class="fs-3">Archives</p>
-                    <button class="btn btn-thg btn-lg">Start</button>
+                <div class="col">
+                    
+                    <div
+                        class="container h-100 w-75 d-flex mx-auto align-items-center"
+                    >
+                    
+                        <div class="row">
+                        <p class="fs-2 mb-2"> The Holy <span class="fs-2 mt-0 accent">Grail</span></p>
+                            <div class="col-12 col-md-3 mb-3 mt-4 m-md-0">
+                                <div class="image-container">
+                                    <img
+                                        class="profile"
+                                        src="src/pogi.jpeg"
+                                        alt=""
+                                    />
+                                    <p class="text">Pogi</p>
+                                </div>
+                            </div>
+                            <?php
+                            $members = [
+                                "Chae" => "chae", 
+                                "Mobi" => "mobi", 
+                                "Misaka" => "misaka", 
+                                "Ramyeun" => "ramyeun", 
+                                "Jaehwqn" => "jaehwan", 
+                                "Saitama" => "saitama", 
+                                "Chillz" => "chillz"
+                            ];
+                            foreach($members as $name => $image) { 
+                                echo '<div class="col-12 col-md-3 mb-3">
+                                        <div class="image-container">
+                                            <img
+                                                class="profile"
+                                                src="src/'.$image.'.jpeg"
+                                                alt=""
+                                            />
+                                        
+                                            <p class="text">'.$name.'</p>
+                                        </div>
+                                    </div>
+                                '; } ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

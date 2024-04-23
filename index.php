@@ -19,7 +19,9 @@
     <body>
         <div class="container-fluid">
             <div class="row min-vh-100">
-                <div class="bg-thg pt-4 col-auto col-md-auto border-end border-thg">
+                <div
+                    class="bg-primary pt-4 col-auto col-md-auto border-end border-bv"
+                >
                     <nav class="nav flex-nowrap">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -32,9 +34,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link"
-                                    ><i
+                                    ><span
                                         class="material-symbols-outlined fs-3 m-2"
-                                        >auto_stories</i
+                                        >auto_stories</span
                                     ></a
                                 >
                             </li>
@@ -72,9 +74,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link"
-                                    ><i
+                                    ><span
                                         class="material-symbols-outlined fs-3 m-2"
-                                        >sword_rose</i
+                                        >sword_rose</span
                                     ></a
                                 >
                             </li>
@@ -82,46 +84,83 @@
                     </nav>
                 </div>
                 <div class="col">
-                    
-                    <div
-                        class="container h-100 w-75 d-flex mx-auto align-items-center"
-                    >
-                    
-                        <div class="row">
-                        <p class="fs-2 mb-2"> The Holy <span class="fs-2 mt-0 accent">Grail</span></p>
-                            <div class="col-12 col-md-3 mb-3 mt-4 m-md-0">
-                                <div class="image-container">
-                                    <img
-                                        class="profile"
-                                        src="src/pogi.jpeg"
-                                        alt=""
-                                    />
-                                    <p class="text">Pogi</p>
-                                </div>
-                            </div>
-                            <?php
-                            $members = [
-                                "Chae" => "chae", 
-                                "Mobi" => "mobi", 
-                                "Misaka" => "misaka", 
-                                "Ramyeun" => "ramyeun", 
-                                "Jaehwqn" => "jaehwan", 
-                                "Saitama" => "saitama", 
-                                "Chillz" => "chillz"
-                            ];
-                            foreach($members as $name => $image) { 
-                                echo '<div class="col-12 col-md-3 mb-3">
-                                        <div class="image-container">
-                                            <img
-                                                class="profile"
-                                                src="src/'.$image.'.jpeg"
-                                                alt=""
-                                            />
-                                        
-                                            <p class="text">'.$name.'</p>
+                    <div class="row pt-3">
+                        <div class="col-12 col-md-6 pe-md-1 mb-2 mb-md-0">
+                            <div class="card bg-bv h-100">
+                                <div class="card-body">
+                                    <p class="ps-2 fs-4 mb-2">cURL</p>
+                                    <textarea
+                                        id="curl"
+                                        rows="10"
+                                        class="form-control bg-bv"
+                                    ></textarea>
+                                    <div class="row">
+                                        <div class="col pe-1">
+                                            <button
+                                                class="btn btn-bv mx-auto mb-2 w-100"
+                                                onclick="generate_curl()"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined"
+                                                    >code</span
+                                                >
+                                                Generate
+                                            </button>
+                                        </div>
+                                        <div class="col ps-1">
+                                            <button
+                                                class="btn btn-bv mx-auto mb-2 w-100"
+                                                onclick="delete_curl('curl')"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined"
+                                                    
+                                                    >delete</span
+                                                >
+                                                Delete
+                                            </button>
                                         </div>
                                     </div>
-                                '; } ?>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="col-12 col-md-6 ps-md-1">
+                                <div class="card bg-bv h-100">
+                                    <div class="card-body">
+                                        <p class="ps-2 fs-4 mb-2">PHP</p>
+                                        <textarea
+                                            id="php"
+                                            rows="10"
+                                            class="form-control bg-bv mt-0"
+                                        ></textarea>
+                                        <div class="row">
+                                            <div class="col pe-1">
+                                                <button
+                                                    class="btn btn-bv mx-auto mb-2 w-100"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined"
+                                                        >content_copy</span
+                                                    >
+                                                    Copy
+                                                </button>
+                                            </div>
+                                            <div class="col ps-1">
+                                                <button
+                                                    class="btn btn-bv mx-auto mb-2 w-100"
+                                                    onclick="delete_curl('php')"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined"
+                                                        >delete</span
+                                                    >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,4 +168,57 @@
             </div>
         </div>
     </body>
+    <script>
+        const generate_curl = () => {
+            const curl = document.getElementById("curl").value;
+            fetch("generate_curl.php", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    curl: curl,
+                }),
+            })
+                .then((response) => response.text())
+                .then((data) => {
+                    const response = JSON.parse(data);
+                    headers = [];
+                    response["headers"].forEach((header) => {
+                        headers.push(`"${header}",`);
+                    });
+                    if (response["method"] == "get") {
+                        document.getElementById("php").value = `$url = "${
+                            response["url"]
+                        }";\n$headers = [\n\t${headers.join(
+                            "\n\t"
+                        )}\n];\n$response = $requests->${
+                            response.method
+                        }($url, $headers);`;
+                    } else {
+                        document.getElementById("php").value = `$url = "${
+                            response["url"]
+                        }";\n$headers = [\n\t${headers.join(
+                            "\n\t"
+                        )}\n];\n$post = "${
+                            response["postfield"]
+                        }";\n$response = $requests->${
+                            response.method
+                        }($url, $headers, $post);`;
+                    }
+                })
+                .catch((error) => console.error("Error:", error));
+        };
+
+
+
+        const copy_curl = () => {
+            const curl = document.getElementById("php");
+
+            curl.select();
+
+            document.execCommand("copy");
+        };
+        const delete_curl = (id) => (document.getElementById(id).value = "");
+    </script>
 </html>

@@ -13,7 +13,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         />
-        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="../../index.css" />
 
         <title>Curl Generator</title>
     </head>
@@ -78,55 +78,5 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"
     ></script>
-    <script>
-        const generate_curl = () => {
-            const curl = document.getElementById("curl").value;
-            fetch("generate_curl.php", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    curl: curl,
-                }),
-            })
-                .then((response) => response.text())
-                .then((data) => {
-                    const response = JSON.parse(data);
-                    headers = [];
-                    response["headers"].forEach((header) => {
-                        headers.push(`"${header}",`);
-                    });
-                    if (response["method"] == "get") {
-                        document.getElementById("curl").value = `$url = "${
-                            response["url"]
-                        }";\n$headers = [\n\t${headers.join(
-                            "\n\t"
-                        )}\n];\n$response = $requests->${
-                            response.method
-                        }($url, $headers);`;
-                    } else {
-                        document.getElementById("curl").value = `$url = "${
-                            response["url"]
-                        }";\n$headers = [\n\t${headers.join(
-                            "\n\t"
-                        )}\n];\n$post = "${
-                            response["postfield"]
-                        }";\n$response = $requests->${
-                            response.method
-                        }($url, $headers, $post);`;
-                    }
-                })
-                .catch((error) => console.error("Error:", error));
-        };
-
-        const copy_curl = () => {
-            const curl = document.getElementById("curl");
-
-            curl.select();
-
-            document.execCommand("copy");
-        };
-        const delete_curl = () => (document.getElementById("curl").value = "");
-    </script>
+    
 </html>
