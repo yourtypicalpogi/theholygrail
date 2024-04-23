@@ -138,6 +138,7 @@
                                             <div class="col pe-1">
                                                 <button
                                                     class="btn btn-bv mx-auto mb-2 w-100"
+                                                    onclick="copy_curl()"
                                                 >
                                                     <span
                                                         class="material-symbols-outlined"
