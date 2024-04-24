@@ -10,9 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      preg_match_all('/-H "(.*?)"/', $curl, $match);
      $headers = $match[1];
 
-     if (preg_match('/--data-raw "(.*)"$/', $curl, $match)) {
+     if (preg_match('/--data-raw "(.*?)"$/', $curl, $match)) {
+          preg_match('/--data-raw "(.*?)"$/', $curl, $match);
           $data = $match[1];
-     } elseif (preg_match('/--data-binary "(.*)"$/', $curl, $match)) {
+
+     } elseif (preg_match('/--data-binary "(.*)"/s', $curl, $match)) {
+          preg_match('/--data-binary "(.*)"/s', $curl, $match);
           $data = $match[1];
      }
 

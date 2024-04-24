@@ -214,7 +214,6 @@
         };
 
 
-
         const copy_curl = () => {
             const curl = document.getElementById("php");
 
